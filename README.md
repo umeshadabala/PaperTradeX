@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**Trade Smart. Risk None.**  
+**Trade. Learn. Dominate.**  
 PaperTradeX is a beginner-friendly, real-time **crypto trading simulator** built with Python and Streamlit. Simulate buying and selling the **top 100 cryptocurrencies** using live prices from CoinGecko — no real money, no risk. Perfect for learning, practicing, and experimenting with trading strategies.
 
 ---
