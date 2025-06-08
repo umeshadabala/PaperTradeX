@@ -1,0 +1,15 @@
+name: Keep Streamlit App Alive
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"  # Every 5 minutes
+  workflow_dispatch:       # Allow manual run from GitHub UI
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send request to keep Streamlit app awake
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" https://papertardex.streamlit.app
