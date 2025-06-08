@@ -1,15 +1,18 @@
-name: Keep Streamlit App Alive
+name: Keep Website Alive
 
 on:
   schedule:
-    - cron: "*/30 * * * *"  # Every 30 minutes
-  workflow_dispatch:       # Allow manual run from GitHub UI
+    - cron: '*/30 * * * *'  # Every 30 minutes
 
 jobs:
-  ping:
+  ping-website:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Send request to keep Streamlit app awake
+      - name: Ping PaperTradeX website
         run: |
-          curl -s -o /dev/null -w "%{http_code}" https://papertardex.streamlit.app
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" -L https://papertardex.streamlit.app)
+          echo "HTTP Status Code: $STATUS_CODE"
+          if [[ "$STATUS_CODE" != "200" ]]; then
+            echo "Warning: Website returned status $STATUS_CODE"
+            exit 1
+          fi
